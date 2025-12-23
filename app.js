@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const layouts = require("express-ejs-layouts");
 var colors = require("colors");
 require('dotenv').config();
 
@@ -15,6 +16,10 @@ if (!fs.existsSync(envPath)) {
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
+app.use(layouts);
+app.set('layout', path.join(__dirname, 'views/layout'));
+// app.set('layout extractStyles', true);
+// app.set('layout extractScripts', true);
 
 // Template engine
 app.set("view engine", "ejs");
