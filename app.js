@@ -1,9 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
-const layouts = require("express-ejs-layouts");
-var colors = require("colors");
 require('dotenv').config();
+const path = require('path');
+const fs = require('fs');
+const colors = require("colors");
 
 // (Before of all:) Check the enviroment configuration for avoid errors
 const envPath = path.join(__dirname, ".env");
@@ -13,6 +11,8 @@ if (!fs.existsSync(envPath)) {
 }
 
 // Configuration
+const express = require('express');
+const layouts = require("express-ejs-layouts");
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
