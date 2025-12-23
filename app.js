@@ -10,12 +10,22 @@ if (!fs.existsSync(envPath)) {
     process.exit(1);
 }
 
-// Configuration
+/********** Configuration *********/
 const express = require('express');
 const layouts = require("express-ejs-layouts");
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
+
+// Static assets
+app.use(express.static('dist'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Expose a flag to views to switch between Vite dev and built assets
+app.locals.isDev = process.env.VITE_DEV === 'true';
+app.locals.viteUrl = process.env.VITE_URL || 'http://localhost:5173';
+
+// Layout
 app.use(layouts);
 app.set('layout', path.join(__dirname, 'views/layout'));
 // app.set('layout extractStyles', true);

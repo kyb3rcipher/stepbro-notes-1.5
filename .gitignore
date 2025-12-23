@@ -1,2 +1,5 @@
 node_modules/
 .env
+
+# Vite build outputs (default outDir)
+dist/
