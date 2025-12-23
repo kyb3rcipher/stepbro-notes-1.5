@@ -6,11 +6,11 @@
     <title><%= title %></title>
 
     <% if (isDev) { %>
-        <script type="module" src="<%= viteUrl %>/@vite/client"></script>
-        <script type="module" src="<%= viteUrl %>/src/main.js"></script>
+        <script type="module" src="<%= viteUrl %>/@vite/client" data-turbo-track="reload"></script>
+        <script type="module" src="<%= viteUrl %>/src/main.js" data-turbo-track="reload"></script>
     <% } else { %>
-        <link rel="stylesheet" href="/assets/main.css">
-        <script type="module" src="/assets/main.js"></script>
+        <link rel="stylesheet" href="/assets/main.css" data-turbo-track="reload">
+        <script type="module" src="/assets/main.js" data-turbo-track="reload"></script>
     <% } %>
 </head>
 <body>
